@@ -99,26 +99,26 @@
 // insertEarth()
 
 //insert desserts
-async function insertDessert(){
-    const response = await fetch(`https://api.edamam.com/api/recipes/v2?type=public&q=dessert&app_id=5cfcc9f3&app_key=4d4502eb96e18028cafc0ee5631704c3`)
-    const data = await response.json()
+// async function insertDessert(){
+//     const response = await fetch(`https://api.edamam.com/api/recipes/v2?type=public&q=dessert&app_id=5cfcc9f3&app_key=4d4502eb96e18028cafc0ee5631704c3`)
+//     const data = await response.json()
 
-    let recipes = data.hits
-    for(let i=0; i<5; i++){
-        document.querySelector("#sweets").innerHTML += `
-        <div class="shadow-md w-56 h-80 m-6 rounded-md">
-            <img src=${recipes[i].recipe.image} class="rounded-sm h-[20vh] m-auto p-5"></img>
-            <p class="text-center text-[#3E2C1B]">${recipes[i].recipe.label}</p>
-            <div class="flex flex-row justify-between">
-                <p>1</p>
-                <p>2</p>
-            </div>
+//     let recipes = data.hits
+//     for(let i=0; i<5; i++){
+//         document.querySelector("#sweets").innerHTML += `
+//         <div class="shadow-md w-56 h-80 m-6 rounded-md">
+//             <img src=${recipes[i].recipe.image} class="rounded-sm h-[20vh] m-auto p-5"></img>
+//             <p class="text-center text-[#3E2C1B]">${recipes[i].recipe.label}</p>
+//             <div class="flex flex-row justify-between">
+//                 <p>1</p>
+//                 <p>2</p>
+//             </div>
 
-        </div>`
-    }
-}
+//         </div>`
+//     }
+// }
 
-insertDessert()
+// insertDessert()
 
 //find recipe
 

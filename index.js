@@ -1,124 +1,142 @@
-// //recommendation
-// let dishType =["Breakfast","Dinner","Lunch","Snack","Teatime"]
-// let num = Math.floor(Math.random()*dishType.length)
-// // setInterval(function(){
-// //     num = Math.floor(Math.random()*dishType.length)
-// // }, 5000)
-// //86400000 -> um dia
-// let chooseType = dishType[num]
+//recommendation
+let dishType =["Breakfast","Dinner","Lunch","Snack","Teatime"]
+let num = Math.floor(Math.random()*dishType.length)
+// setInterval(function(){
+//     num = Math.floor(Math.random()*dishType.length)
+// }, 5000)
+//86400000 -> um dia
+let chooseType = dishType[num]
 
-// async function insertRecommendation(){
-//     const response = await fetch(`https://api.edamam.com/api/recipes/v2?type=any&app_id=5cfcc9f3&app_key=4d4502eb96e18028cafc0ee5631704c3&mealType=${chooseType}`)
-//     const data = await response.json()
+async function insertRecommendation(){
+    const response = await fetch(`https://api.edamam.com/api/recipes/v2?type=any&app_id=5cfcc9f3&app_key=4d4502eb96e18028cafc0ee5631704c3&mealType=${chooseType}`)
+    const data = await response.json()
 
-//     let recipes = data.hits
-//     for(let i=0; i < 5; i++) {
-//         document.querySelector("#recommendation").innerHTML += `
-//         <div class="shadow-md w-56 h-80 m-6 rounded-md">
-//             <img src=${recipes[i].recipe.image} class="rounded-sm h-[20vh] m-auto p-5"></img>
-//             <p class="text-center text-[#3E2C1B]">${recipes[i].recipe.label}</p>
-//             <div class="flex flex-row justify-between">
-//                 <p>1</p>
-//                 <p>2</p>
-//             </div>
+    let recipes = data.hits
+    for(let i=0; i < 5; i++) {
+        document.querySelector("#recommendation").innerHTML += `
+        <div class="shadow-md w-56 h-80 m-6 rounded-md hover:bg-[#F7F7F7]" onclick="unique('${recipes[i].recipe.uri}')">
+            <img src=${recipes[i].recipe.image} class="rounded-2xl h-[30vh] m-auto p-4"></img>
+            <p class="text-center text-[#3E2C1B]">${recipes[i].recipe.label}</p>
+            <div class="flex flex-row justify-center m-4">
+                <p ${(isItVegan(recipes[i].recipe.healthLabels))? style="visibility: visible" : style="visibility: hidden"} class="mx-2 mx-2 flex items-end">Vegan</p>
+                <p ${(isItVegetarian(recipes[i].recipe.healthLabels))? style="visibility: visible" : style="visibility: hidden"} class="mx-2 flex items-end">Vegetarian</p>
+            </div>
 
-//         </div>`
-//     }
-// }
+        </div>`
+    }
 
-// insertRecommendation()
+}
 
-// //insert meat recipes
+function isItVegan(recipe){
+    for(let i=0; i<recipe.length; i++){
+        if(recipe[i] == "Vegan"){
+            return true
+        }
+    }
+}
 
-// async function insertMeat(){
-//     const response = await fetch(`https://api.edamam.com/api/recipes/v2?type=any&q=meat&app_id=5cfcc9f3&app_key=4d4502eb96e18028cafc0ee5631704c3`)
-//     const data = await response.json();
+function isItVegetarian(recipe){
+    for(let i=0; i<recipe.length; i++){
+        if(recipe[i] == "Vegetarian"){
+            return true
+        }
+    }
+}
 
-//     let recipes = data.hits;
-//     console.log(recipes);
 
-//     for(let i=0; i < 5; i++) {
-//             document.querySelector("#meat").innerHTML += `
-//             <div class="shadow-md w-56 h-80 m-6 rounded-md">
-//                 <img src=${recipes[i].recipe.image} class="rounded-sm h-[20vh] m-auto p-5"></img>
-//                 <p class="text-center text-[#3E2C1B]">${recipes[i].recipe.label}</p>
-//                 <div class="flex flex-row justify-between">
-//                     <p>1</p>
-//                     <p>2</p>
-//                 </div>
+insertRecommendation()
 
-//             </div>`      
-//     }
-// }
+//insert meat recipes
 
-// insertMeat()
+async function insertMeat(){
+    const response = await fetch(`https://api.edamam.com/api/recipes/v2?type=any&q=meat&app_id=5cfcc9f3&app_key=4d4502eb96e18028cafc0ee5631704c3`)
+    const data = await response.json();
 
-// //insert fish meals
-// async function insertFish(){
-//     const response = await fetch(`https://api.edamam.com/api/recipes/v2?type=any&q=fish&app_id=5cfcc9f3&app_key=4d4502eb96e18028cafc0ee5631704c3`)
-//     const data = await response.json()
+    let recipes = data.hits;
+    console.log(recipes);
 
-//     let recipes = data.hits
+    for(let i=0; i < 5; i++) {
+            document.querySelector("#meat").innerHTML += `
+            <div class="shadow-md w-56 h-80 m-6 rounded-md" onclick="unique('${recipes[i].recipe.uri}')">
+                <img src=${recipes[i].recipe.image} class="rounded-sm h-[20vh] m-auto p-5"></img>
+                <p class="text-center text-[#3E2C1B]">${recipes[i].recipe.label}</p>
+                <div class="flex flex-row justify-between m-4">
+                    <p>1</p>
+                    <p>2</p>
+                </div>
 
-//     for(let i=0; i < 5; i++) {
-//         document.querySelector("#water").innerHTML += `
-//         <div class="shadow-md w-56 h-80 m-6 rounded-md">
-//             <img src=${recipes[i].recipe.image} class="rounded-sm h-[20vh] m-auto p-5"></img>
-//             <p class="text-center text-[#3E2C1B]">${recipes[i].recipe.label}</p>
-//             <div class="flex flex-row justify-between">
-//                 <p>1</p>
-//                 <p>2</p>
-//             </div>
+            </div>`      
+    }
+}
 
-//         </div>`   
-//     }
-// }
+insertMeat()
 
-// insertFish()
+//insert fish meals
+async function insertFish(){
+    const response = await fetch(`https://api.edamam.com/api/recipes/v2?type=any&q=fish&app_id=5cfcc9f3&app_key=4d4502eb96e18028cafc0ee5631704c3`)
+    const data = await response.json()
 
-// //insert earth meals
-// async function insertEarth(){
-//     const response = await fetch(`https://api.edamam.com/api/recipes/v2?type=public&q=veggie&app_id=5cfcc9f3&app_key=4d4502eb96e18028cafc0ee5631704c3`)
-//     const data = await response.json()
+    let recipes = data.hits
 
-//     let recipes = data.hits
-//     for(let i=0; i<5; i++){
-//         document.querySelector("#earth").innerHTML += `
-//         <div class="shadow-md w-56 h-80 m-6 rounded-md">
-//             <img src=${recipes[i].recipe.image} class="rounded-sm h-[20vh] m-auto p-5"></img>
-//             <p class="text-center text-[#3E2C1B]">${recipes[i].recipe.label}</p>
-//             <div class="flex flex-row justify-between">
-//                 <p>1</p>
-//                 <p>2</p>
-//             </div>
+    for(let i=0; i < 5; i++) {
+        document.querySelector("#water").innerHTML += `
+        <div class="shadow-md w-56 h-80 m-6 rounded-md" onclick="unique('${recipes[i].recipe.uri}')">
+            <img src=${recipes[i].recipe.image} class="rounded-sm h-[20vh] m-auto p-5"></img>
+            <p class="text-center text-[#3E2C1B]">${recipes[i].recipe.label}</p>
+            <div class="flex flex-row justify-between m-4">
+                <p>1</p>
+                <p>2</p>
+            </div>
 
-//         </div>`
-//     }
-// }
+        </div>`   
+    }
+}
 
-// insertEarth()
+insertFish()
 
-//insert desserts
-// async function insertDessert(){
-//     const response = await fetch(`https://api.edamam.com/api/recipes/v2?type=public&q=dessert&app_id=5cfcc9f3&app_key=4d4502eb96e18028cafc0ee5631704c3`)
-//     const data = await response.json()
+//insert earth meals
+async function insertEarth(){
+    const response = await fetch(`https://api.edamam.com/api/recipes/v2?type=public&q=veggie&app_id=5cfcc9f3&app_key=4d4502eb96e18028cafc0ee5631704c3`)
+    const data = await response.json()
 
-//     let recipes = data.hits
-//     for(let i=0; i<5; i++){
-//         document.querySelector("#sweets").innerHTML += `
-//         <div class="shadow-md w-56 h-80 m-6 rounded-md">
-//             <img src=${recipes[i].recipe.image} class="rounded-sm h-[20vh] m-auto p-5"></img>
-//             <p class="text-center text-[#3E2C1B]">${recipes[i].recipe.label}</p>
-//             <div class="flex flex-row justify-between">
-//                 <p>1</p>
-//                 <p>2</p>
-//             </div>
+    let recipes = data.hits
+    for(let i=0; i<5; i++){
+        document.querySelector("#earth").innerHTML += `
+        <div class="shadow-md w-56 h-80 m-6 rounded-md" onclick="unique('${recipes[i].recipe.uri}')">
+            <img src=${recipes[i].recipe.image} class="rounded-sm h-[20vh] m-auto p-5"></img>
+            <p class="text-center text-[#3E2C1B]">${recipes[i].recipe.label}</p>
+            <div class="flex flex-row justify-between m-4">
+                <p>1</p>
+                <p>2</p>
+            </div>
 
-//         </div>`
-//     }
-// }
+        </div>`
+    }
+}
 
-// insertDessert()
+insertEarth()
+
+// insert desserts
+async function insertDessert(){
+    const response = await fetch(`https://api.edamam.com/api/recipes/v2?type=public&q=dessert&app_id=5cfcc9f3&app_key=4d4502eb96e18028cafc0ee5631704c3`)
+    const data = await response.json()
+
+    let recipes = data.hits
+    for(let i=0; i<5; i++){
+        document.querySelector("#sweets").innerHTML += `
+        <div class="shadow-md w-56 h-80 m-6 rounded-md" onclick="unique('${recipes[i].recipe.uri}')">
+            <img src=${recipes[i].recipe.image} class="rounded-sm h-[20vh] m-auto p-5"></img>
+            <p class="text-center text-[#3E2C1B]">${recipes[i].recipe.label}</p>
+            <div class="flex flex-row justify-between m-4">
+                <p>1</p>
+                <p>2</p>
+            </div>
+
+        </div>`
+    }
+}
+
+insertDessert()
 
 //find recipe
 
@@ -134,29 +152,31 @@ searchBtn.addEventListener("click",async function(){
     
 
     if(search != ""){
-        console.log(recipeSearch);
-        document.querySelector("#recipes").innerHTML = '<div id="result" class="grid grid-cols-6 justify-items-center"></div>'
-        for(let i=0; i<recipeSearch.length; i++){
-            document.querySelector("#result").innerHTML += `
-            <div class="shadow-md w-56 h-80 m-6 rounded-md" onclick="unique(${recipeSearch[i].recipe.cautions})">
-                <img src=${recipeSearch[i].recipe.image} class="rounded-sm h-[20vh] m-auto p-5"></img>
-                <p class="text-center text-[#3E2C1B]">${recipeSearch[i].recipe.label}</p>
-                <div class="flex flex-row justify-between">
-                    <p>1</p>
-                    <p>2</p>
-                </div>
-    
-            </div>`
+            if(recipeSearch.length > 0){
+                        console.log(recipeSearch);
+                        document.querySelector("#recipes").innerHTML = '<div id="result" class="grid grid-cols-6 justify-items-center"></div>'
+                        for(let i=0; i<recipeSearch.length; i++){
+                            document.querySelector("#result").innerHTML += `
+                            <div class="shadow-md w-56 h-80 m-6 rounded-md" onclick="unique('${recipeSearch[i].recipe.uri}')">
+                                <img src=${recipeSearch[i].recipe.image} class="rounded-sm h-[20vh] m-auto p-5"></img>
+                                <p class="text-center text-[#3E2C1B]">${recipeSearch[i].recipe.label}</p>
+                                <div class="flex flex-row justify-between">
+                                    <p>1</p>
+                                    <p>2</p>
+                                </div>
+                    
+                            </div>`
+                        }
+            }else{
+                document.querySelector("#recipes").innerHTML=`<div id="result" class="grid justify-items-center"><img src="assetsProjeto/404.svg" class="h-15"></div>`
+            }
         }     
 
-    }
-    
 })
 
 function unique(recipeSearch) {
+    localStorage.setItem(recipeSearch)
+    location.href = "recipeDetail.html"
     console.log(recipeSearch);
-    
-
-    // https://api.edamam.com/api/recipes/v2/by-uri?type=public&uri=http%3A%2F%2Fwww.edamam.com%2Fontologies%2Fedamam.owl%23recipe_1b6dfeaf0988f96b187c7c9bb69a14fa&app_id=5cfcc9f3&app_key=4d4502eb96e18028cafc0ee5631704c3
-    
+        
 }

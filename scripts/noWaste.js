@@ -17,11 +17,11 @@ find.addEventListener("click", async function(){
             for(let i=0; i<recipes.length; i++){
                 document.querySelector("#result").innerHTML += `
                 <div class="shadow-md w-56 h-80 m-6 rounded-md" onclick="unique('${recipes[i].recipe.uri}')">
-                    <img src=${recipes[i].recipe.image} class="rounded-sm h-[20vh] m-auto p-5"></img>
+                    <img src=${recipes[i].recipe.image} class="rounded-2xl h-[30vh] m-auto p-4"></img>
                     <p class="text-center text-[#3E2C1B]">${recipes[i].recipe.label}</p>
                     <div class="flex flex-row justify-between">
-                        <p>1</p>
-                        <p>2</p>
+                    <p ${(isItVegan(recipes[i].recipe.healthLabels))? style="visibility: visible" : style="visibility: hidden"} class="mx-2 mx-2 flex items-end">Vegan</p>
+                    <p ${(isItVegetarian(recipes[i].recipe.healthLabels))? style="visibility: visible" : style="visibility: hidden"} class="mx-2 flex items-end">Vegetarian</p>
                     </div>
                 </div>`
             }
@@ -32,10 +32,26 @@ find.addEventListener("click", async function(){
     
 })
 
+function isItVegan(recipe){
+    for(let i=0; i<recipe.length; i++){
+        if(recipe[i] == "Vegan"){
+            return true
+        }
+    }
+}
+
+function isItVegetarian(recipe){
+    for(let i=0; i<recipe.length; i++){
+        if(recipe[i] == "Vegetarian"){
+            return true
+        }
+    }
+}
+
 function unique(recipe){
     console.log(recipe);
     recipe = recipe.replace("#", "%23")
     console.log(recipe);
     localStorage.setItem("recipe",recipe)
-    location.href = "recipeDetail.html"
+    location.href = "../pages/recipeDetail.html"
 }

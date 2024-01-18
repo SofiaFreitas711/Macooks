@@ -12,14 +12,14 @@ async function insertRecommendation(){
     const data = await response.json()
 
     let recipes = data.hits
-    for(let i=0; i < 5; i++) {
+    for(let i=0; i < 6; i++) {
         document.querySelector("#recommendation").innerHTML += `
-        <div class="shadow-md w-56 h-80 m-6 rounded-md hover:bg-[#F7F7F7]" onclick="unique('${recipes[i].recipe.uri}')">
-            <img src=${recipes[i].recipe.image} class="rounded-2xl h-[30vh] m-auto p-4"></img>
-            <p class="text-center text-[#3E2C1B]">${recipes[i].recipe.label}</p>
+        <div class="text-sm shadow-md w-56 h-75 m-4 rounded-lg hover:bg-[#F7F7F7]" onclick="unique('${recipes[i].recipe.uri}')">
+            <img src=${recipes[i].recipe.image} class="rounded-lg w-[100%] h-[20vh] m-auto p-4"></img>
+            <p class="font-bold text-center text-[#3E2C1B]">${recipes[i].recipe.label}</p>
             <div class="flex flex-row justify-center m-4">
-                <p ${(isItVegan(recipes[i].recipe.healthLabels))? style="visibility: visible" : style="visibility: hidden"} class="mx-2 mx-2 flex items-end">Vegan</p>
-                <p ${(isItVegetarian(recipes[i].recipe.healthLabels))? style="visibility: visible" : style="visibility: hidden"} class="mx-2 flex items-end">Vegetarian</p>
+                <p style="visibility:${isItVegan(recipes[i].recipe.healthLabels)}" class="mx-2 mx-2 flex items-end text-[#967D65]">Vegan</p>
+                <p style="visibility:${isItVegetarian(recipes[i].recipe.healthLabels)}" class="mx-2 flex items-end text-[#967D65]">Vegetarian</p>
             </div>
 
         </div>`
@@ -37,17 +37,18 @@ async function insertMeat(){
     let recipes = data.hits;
     console.log(recipes);
 
-    for(let i=0; i < 5; i++) {
+    for(let i=0; i < 6; i++) {
             document.querySelector("#meat").innerHTML += `
-            <div class="shadow-md w-56 h-80 m-6 rounded-md hover:bg-[#F7F7F7]" onclick="unique('${recipes[i].recipe.uri}')">
-                <img src=${recipes[i].recipe.image} class="rounded-2xl h-[30vh] m-auto p-4"></img>
-                <p class="text-center text-[#3E2C1B]">${recipes[i].recipe.label}</p>
+            <div class="text-sm shadow-md w-56 h-75 m-4 rounded-lg hover:bg-[#F7F7F7]" onclick="unique('${recipes[i].recipe.uri}')">
+                <img src=${recipes[i].recipe.image} class="rounded-lg w-[100%] h-[20vh] m-auto p-4"></img>
+                <p class="font-bold text-center text-[#3E2C1B]">${recipes[i].recipe.label}</p>
                 <div class="flex flex-row justify-between m-4">
-                <p ${(isItVegan(recipes[i].recipe.healthLabels))? style="visibility: visible" : style="visibility: hidden"} class="mx-2 mx-2 flex items-end">Vegan</p>
-                <p ${(isItVegetarian(recipes[i].recipe.healthLabels))? style="visibility: visible" : style="visibility: hidden"} class="mx-2 flex items-end">Vegetarian</p>
+                    <p style="visibility:${isItVegan(recipes[i].recipe.healthLabels)}" class="mx-2 mx-2 flex items-end text-[#967D65]">Vegan</p>
+                    <p style="visibility:${isItVegetarian(recipes[i].recipe.healthLabels)}" class="mx-2 flex items-end text-[#967D65]">Vegetarian</p>
                 </div>
 
-            </div>`      
+            </div>`
+               
     }
 }
 
@@ -60,14 +61,14 @@ async function insertFish(){
 
     let recipes = data.hits
 
-    for(let i=0; i < 5; i++) {
+    for(let i=0; i < 6; i++) {
         document.querySelector("#water").innerHTML += `
-        <div class="shadow-md w-56 h-80 m-6 rounded-md hover:bg-[#F7F7F7]" onclick="unique('${recipes[i].recipe.uri}')">
-            <img src=${recipes[i].recipe.image} class="rounded-2xl h-[30vh] m-auto p-4"></img>
-            <p class="text-center text-[#3E2C1B]">${recipes[i].recipe.label}</p>
+        <div class="text-sm shadow-md w-56 h-75 m-4 rounded-lg hover:bg-[#F7F7F7]" onclick="unique('${recipes[i].recipe.uri}')">
+            <img src=${recipes[i].recipe.image} class="rounded-lg w-[100%] h-[20vh] m-auto p-4"></img>
+            <p class="font-bold text-center text-[#3E2C1B]">${recipes[i].recipe.label}</p>
             <div class="flex flex-row justify-between m-4">
-            <p ${(isItVegan(recipes[i].recipe.healthLabels))? style="visibility: visible" : style="visibility: hidden"} class="mx-2 mx-2 flex items-end">Vegan</p>
-            <p ${(isItVegetarian(recipes[i].recipe.healthLabels))? style="visibility: visible" : style="visibility: hidden"} class="mx-2 flex items-end">Vegetarian</p>
+                <p style="visibility:${isItVegan(recipes[i].recipe.healthLabels)}" class="mx-2 mx-2 flex items-end text-[#967D65]">Vegan</p>
+                <p style="visibility:${isItVegetarian(recipes[i].recipe.healthLabels)}" class="mx-2 flex items-end text-[#967D65]">Vegetarian</p>
             </div>
 
         </div>`   
@@ -82,14 +83,14 @@ async function insertEarth(){
     const data = await response.json()
 
     let recipes = data.hits
-    for(let i=0; i<5; i++){
+    for(let i=0; i<6; i++){
         document.querySelector("#earth").innerHTML += `
-        <div class="shadow-md w-56 h-80 m-6 rounded-md hover:bg-[#F7F7F7]" onclick="unique('${recipes[i].recipe.uri}')">
-            <img src=${recipes[i].recipe.image} class="rounded-2xl h-[30vh] m-auto p-4"></img>
-            <p class="text-center text-[#3E2C1B]">${recipes[i].recipe.label}</p>
+        <div class="text-sm shadow-md w-56 h-75 m-4 rounded-lg hover:bg-[#F7F7F7]" onclick="unique('${recipes[i].recipe.uri}')">
+            <img src=${recipes[i].recipe.image} class="rounded-lg w-[100%] h-[20vh] m-auto p-4"></img>
+            <p class="font-bold text-center text-[#3E2C1B]">${recipes[i].recipe.label}</p>
             <div class="flex flex-row justify-between m-4">
-            <p ${(isItVegan(recipes[i].recipe.healthLabels))? style="visibility: visible" : style="visibility: hidden"} class="mx-2 mx-2 flex items-end">Vegan</p>
-            <p ${(isItVegetarian(recipes[i].recipe.healthLabels))? style="visibility: visible" : style="visibility: hidden"} class="mx-2 flex items-end">Vegetarian</p>
+                <p style="visibility:${isItVegan(recipes[i].recipe.healthLabels)}" class="mx-2 mx-2 flex items-end text-[#967D65]">Vegan</p>
+                <p style="visibility:${isItVegetarian(recipes[i].recipe.healthLabels)}" class="mx-2 flex items-end text-[#967D65]">Vegetarian</p>
             </div>
 
         </div>`
@@ -104,14 +105,14 @@ async function insertDessert(){
     const data = await response.json()
 
     let recipes = data.hits
-    for(let i=0; i<5; i++){
+    for(let i=0; i<6; i++){
         document.querySelector("#sweets").innerHTML += `
-        <div class="shadow-md w-56 h-80 m-6 rounded-md hover:bg-[#F7F7F7]" onclick="unique('${recipes[i].recipe.uri}')">
-            <img src=${recipes[i].recipe.image} class="rounded-2xl h-[30vh] m-auto p-4"></img>
-            <p class="text-center text-[#3E2C1B]">${recipes[i].recipe.label}</p>
+        <div class="text-sm shadow-md w-56 h-75 m-4 rounded-lg hover:bg-[#F7F7F7]" onclick="unique('${recipes[i].recipe.uri}')">
+            <img src=${recipes[i].recipe.image} class="rounded-lg w-[100%] h-[20vh] m-auto p-4"></img>
+            <p class="font-bold text-center text-[#3E2C1B]">${recipes[i].recipe.label}</p>
             <div class="flex flex-row justify-between m-4">
-            <p ${(isItVegan(recipes[i].recipe.healthLabels))? style="visibility: visible" : style="visibility: hidden"} class="mx-2 mx-2 flex items-end">Vegan</p>
-            <p ${(isItVegetarian(recipes[i].recipe.healthLabels))? style="visibility: visible" : style="visibility: hidden"} class="mx-2 flex items-end">Vegetarian</p>
+                <p style="visibility:${isItVegan(recipes[i].recipe.healthLabels)}" class="mx-2 mx-2 flex items-end text-[#967D65]">Vegan</p>
+                <p style="visibility:${isItVegetarian(recipes[i].recipe.healthLabels)}" class="mx-2 flex items-end text-[#967D65]">Vegetarian</p>
             </div>
 
         </div>`
@@ -136,21 +137,21 @@ searchBtn.addEventListener("click",async function(){
     if(search != ""){
             if(recipeSearch.length > 0){
                         console.log(recipeSearch);
-                        document.querySelector("#recipes").innerHTML = '<div id="result" class="grid grid-cols-6 justify-items-center"></div>'
+                        document.querySelector("#recipes").innerHTML = '<div id="result" class="sm:grid grid-cols-2 md:grid grid-cols-3 lg:grid-cols-6 "></div>'
                         for(let i=0; i<recipeSearch.length; i++){
                             document.querySelector("#result").innerHTML += `
-                            <div class="shadow-md w-56 h-80 m-6 rounded-md hover:bg-[#F7F7F7]" onclick="unique('${recipeSearch[i].recipe.uri}')">
-                                <img src=${recipeSearch[i].recipe.image} class="rounded-2xl h-[30vh] m-auto p-4"></img>
-                                <p class="text-center text-[#3E2C1B]">${recipeSearch[i].recipe.label}</p>
+                            <div class="text-sm shadow-md w-56 h-75 m-4 rounded-lg hover:bg-[#F7F7F7]" onclick="unique('${recipeSearch[i].recipe.uri}')">
+                                <img src=${recipeSearch[i].recipe.image} class="rounded-lg w-[100%] h-[20vh] m-auto p-4"></img>
+                                <p class="font-bold text-center text-[#3E2C1B]">${recipeSearch[i].recipe.label}</p>
                                 <div class="flex flex-row justify-between">
-                                <p ${(isItVegan(recipes[i].recipe.healthLabels))? style="visibility: visible" : style="visibility: hidden"} class="mx-2 mx-2 flex items-end">Vegan</p>
-                                <p ${(isItVegetarian(recipes[i].recipe.healthLabels))? style="visibility: visible" : style="visibility: hidden"} class="mx-2 flex items-end">Vegetarian</p>
+                                    <p style="visibility:${isItVegan(recipeSearch[i].recipe.healthLabels)}" class="mx-2 mx-2 flex items-end text-[#967D65]">Vegan</p>
+                                    <p style="visibility:${isItVegetarian(recipeSearch[i].recipe.healthLabels)}" class="mx-2 flex items-end text-[#967D65]">Vegetarian</p>
                                 </div>
                     
                             </div>`
                         }
             }else{
-                document.querySelector("#recipes").innerHTML=`<div id="result" class="grid justify-items-center"><img src="assetsProjeto/404.svg" class="h-15"></div>`
+                document.querySelector("#recipes").innerHTML=`<div id="result" class="grid justify-items-center"><img src="assetsProjeto/404.svg" class="h-[15vh]"></div>`
             }
         }     
 
@@ -163,17 +164,17 @@ function unique(recipeSearch) {
 }
 
 function isItVegan(recipe){
-    for(let i=0; i<recipe.length; i++){
-        if(recipe[i] == "Vegan"){
-            return true
-        }
+    if (recipe.includes("Vegan")) {
+        return "visible"
+    } else {
+        return "hidden"
     }
 }
 
 function isItVegetarian(recipe){
-    for(let i=0; i<recipe.length; i++){
-        if(recipe[i] == "Vegetarian"){
-            return true
-        }
+    if (recipe.includes("Vegetarian")) {
+        return "visible"
+    } else {
+        return "hidden"
     }
 }

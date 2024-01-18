@@ -1,7 +1,7 @@
 let recipe = localStorage.getItem("recipe")
 console.log(recipe)
-recipe = recipe.split("_")
-recipe = recipe[1]
+recipe = recipe.split("_")  //from the uri given it splits it where the "_" is found to get the id
+recipe = recipe[1] //id given
 console.log(recipe);
 
 // async function details(){
@@ -46,7 +46,7 @@ async function details(){
     }
 
     let img = document.querySelector("#image")
-    img.src = detail.images.LARGE.url
+    img.src = detail.images.REGULAR.url
 
     let prep = document.querySelector("#prep")
     prep.href = detail.url

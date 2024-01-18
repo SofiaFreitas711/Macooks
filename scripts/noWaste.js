@@ -1,6 +1,9 @@
 let find = document.querySelector("button")
 
 find.addEventListener("click", async function(){
+    // let igr1 = "tuna"
+    // let igr2 = "tomato"
+    // let igr3 = "pepper"
     let igr1 = document.querySelector("#igr1").value
     let igr2 = document.querySelector("#igr2").value
     let igr3 = document.querySelector("#igr3").value
@@ -11,40 +14,39 @@ find.addEventListener("click", async function(){
     let recipes = data.hits
 
     if(igr1!=""&&igr2!=""&&igr3!=""){
-        console.log(recipes);
         if(recipes.length > 0){
-            document.querySelector("#result").innerHTML = '<div id="result" class="grid grid-cols-6 justify-items-center"></div>'
+            document.querySelector("#container").innerHTML = `<div id="result" class="sm:grid grid-cols-2 md:grid grid-cols-3 lg:grid-cols-6"></div>`
             for(let i=0; i<recipes.length; i++){
                 document.querySelector("#result").innerHTML += `
-                <div class="shadow-md w-56 h-80 m-6 rounded-md" onclick="unique('${recipes[i].recipe.uri}')">
-                    <img src=${recipes[i].recipe.image} class="rounded-2xl h-[30vh] m-auto p-4"></img>
-                    <p class="text-center text-[#3E2C1B]">${recipes[i].recipe.label}</p>
+                <div class="text-sm shadow-md w-56 h-75 m-4 rounded-lg hover:bg-[#F7F7F7]" onclick="unique('${recipes[i].recipe.uri}')">
+                    <img src=${recipes[i].recipe.image} class="rounded-lg w-[100%] h-[20vh] m-auto p-4"></img>
+                    <p class="font-bold text-center text-[#3E2C1B]">${recipes[i].recipe.label}</p>
                     <div class="flex flex-row justify-between">
-                    <p ${(isItVegan(recipes[i].recipe.healthLabels))? style="visibility: visible" : style="visibility: hidden"} class="mx-2 mx-2 flex items-end">Vegan</p>
-                    <p ${(isItVegetarian(recipes[i].recipe.healthLabels))? style="visibility: visible" : style="visibility: hidden"} class="mx-2 flex items-end">Vegetarian</p>
+                    <p style="visibility:${isItVegan(recipes[i].recipe.healthLabels)}" class="mx-2 mx-2 flex items-end text-[#967D65]">Vegan</p>
+                    <p style="visibility:${isItVegetarian(recipes[i].recipe.healthLabels)}" class="mx-2 flex items-end text-[#967D65]">Vegetarian</p>
                     </div>
                 </div>`
             }
         }else{
-            document.querySelector("#result").innerHTML=`<div id="result" class="flex flex-row justify-items-center"><img src="assetsProjeto/404.svg" class="h-15 m-auto"></div>`    
+            document.querySelector("#container").innerHTML=`<div id="result" class="flex flex-row justify-items-center"><img src="../assetsProjeto/404.svg" class="h-12 m-auto"></div>`    
         }
     }
     
 })
 
 function isItVegan(recipe){
-    for(let i=0; i<recipe.length; i++){
-        if(recipe[i] == "Vegan"){
-            return true
-        }
+    if (recipe.includes("Vegan")) {
+        return "visible"
+    } else {
+        return "hidden"
     }
 }
 
 function isItVegetarian(recipe){
-    for(let i=0; i<recipe.length; i++){
-        if(recipe[i] == "Vegetarian"){
-            return true
-        }
+    if (recipe.includes("Vegetarian")) {
+        return "visible"
+    } else {
+        return "hidden"
     }
 }
 

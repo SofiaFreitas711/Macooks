@@ -7,14 +7,14 @@
     
     <title>MaCooks</title>
 </head>
-<body class="bg-cover bg-center bg-[url('../assetsProjeto/background.png')]">
+<body class="font-sans bg-cover bg-center bg-[url('../assetsProjeto/background.png')]">
     <div>
         <nav class="flex flex-row justify-between bg-white sticky drop-shadow">
-            <img class="flex h-7 m-5" src="assetsProjeto/Group 1.png"/>
+            <img class="flex h-7 m-5" src="../assetsProjeto/Group 1.png"/>
             <ul class="flex flex-row text-[#3E2C1B]">
-                <a class="m-6 hover:text-[#967D65]" href="../index.html">Home</a>
-                <a class="m-6 hover:text-[#967D65]" href="noWaste.html">No Waste</a>
-                <a class="m-6 hover:text-[#967D65]" href="about.html">About Us</a>
+                <a class="font-bold m-6 hover:text-[#967D65]" href="../index.html">Home</a>
+                <a class="font-bold m-6 hover:text-[#967D65]" href="noWaste.html">No Waste</a>
+                <a class="font-bold m-6 hover:text-[#967D65]" href="about.html">About Us</a>
             </ul>
         </nav>
     </div>
@@ -24,7 +24,9 @@
       
     
         <div class="flex flex-row justify-center" id="container">
-            <div class="w-[40%] max-h-fit rounded-md border border-[#3E2C1B] bg-white m-6 p-4" id="igrs"></div>
+            <div class="w-[40%] max-h-fit rounded-md border border-[#3E2C1B] bg-white m-6 p-4 text-[#3E2C1B]" id="igrs">
+                <p class="text-xl font-bold my-2">Ingredients</p>
+            </div>
             <div class="grid grid-cols-1 p-6">
                 <img src="" alt="" id="image" class="rounded-md h-5/6 w-full">
                 <a href="" id="prep"><button class="bg-[#3E2C1B] text-white rounded-md h-24 w-full">See full recipe here!</button></a>
@@ -32,6 +34,23 @@
 
         </div>
     </div>
+    <footer class="p-10 bg-white">
+        <hr>
+        <div class="flex flex-row justify-between my-2">
+            <div class="my-4">
+                <p class="text-l font-bold text-[#3E2C1B]">Contact Us:</p>
+                <p>📩 help@macooks.com</p>
+                <p>📲 (+351)123456789</p>
+            </div>
+            <div class="my-4 text-[#3E2C1B]">
+                <p>©2024 MaCooks</p>
+            </div>
+            <div class="my-4 text-[#3E2C1B]">
+                <p>Food is the fuel of your body! Enjoy your meals!</p>
+            </div>
+
+        </div>
+    </footer>
     <script src="../scripts/recipeDetail.js"></script>
 </body>
 </html>

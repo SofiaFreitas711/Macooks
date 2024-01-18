@@ -7,14 +7,14 @@
     
     <title>MaCooks</title>
 </head>
-<body>
+<body class="font-sans">
     <div>
         <nav class="flex flex-row justify-between">
-            <img class="flex h-7 m-5" src="assetsProjeto/Group 1.png"/>
+            <img class="flex h-7 m-5" src="../assetsProjeto/Group 1.png"/>
             <ul class="flex flex-row text-[#3E2C1B]">
-                <a class="m-6 hover:text-[#967D65]" href="../index.html">Home</a>
-                <a class="m-6 hover:text-[#967D65]" href="noWaste.html">No Waste</a>
-                <a class="m-6 hover:text-[#967D65]" href="about.html">About Us</a>
+                <a class="font-bold m-6 hover:text-[#967D65]" href="../index.html">Home</a>
+                <a class="font-bold m-6 hover:text-[#967D65]" href="noWaste.html">No Waste</a>
+                <a class="font-bold m-6 hover:text-[#967D65]" href="about.html">About Us</a>
             </ul>
         </nav>
     </div>
@@ -31,9 +31,29 @@
             <button class="rounded-full bg-[#E6C894] text-[#3E2C1B] p-2 m-4" id="find">Let's cook!</button>
         </div>   
     </div>
-    <div id="result" class="grid grid-cols-5">
-
+    <div class="m-4" id="container">
+        <div id="result">
+            <h1 class="text-3xl text-center text-slate-300 my-[20vh]">Type Ingrdients For Some Ideas</h1>
+        </div>
     </div>
+
+    <footer class="p-10 bg-white">
+        <hr>
+        <div class="flex flex-row justify-between my-2">
+            <div class="my-4">
+                <p class="text-l font-bold text-[#3E2C1B]">Contact Us:</p>
+                <p>📩 help@macooks.com</p>
+                <p>📲 (+351)123456789</p>
+            </div>
+            <div class="my-4 text-[#3E2C1B]">
+                <p>©2024 MaCooks</p>
+            </div>
+            <div class="my-4 text-[#3E2C1B]">
+                <p>Food is the fuel of your body! Enjoy your meals!</p>
+            </div>
+
+        </div>
+    </footer>
     <script src="../scripts/noWaste.js"></script>
 </body>
 </html>

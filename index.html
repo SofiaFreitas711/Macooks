@@ -8,14 +8,14 @@
     
     <title>MaCooks</title>
 </head>
-<body>
+<body class="font-sans">
     <div>
         <nav class="flex flex-row justify-between sticky top-0 drop-shadow">
             <img class="flex h-7 m-5" src="assetsProjeto/Group 1.png"/>
             <ul class="flex flex-row text-[#3E2C1B]">
-                <a class="m-6 hover:text-[#967D65]" href="pages/index.html">Home</a>
-                <a class="m-6 hover:text-[#967D65]" href="pages/noWaste.html">No Waste</a>
-                <a class="m-6 hover:text-[#967D65]" href="pages/about.html">About Us</a>
+                <a class="font-bold m-6 hover:text-[#967D65]" href="index.html">Home</a>
+                <a class="font-bold m-6 hover:text-[#967D65]" href="pages/noWaste.html">No Waste</a>
+                <a class="font-bold m-6 hover:text-[#967D65]" href="pages/about.html">About Us</a>
             </ul>
         </nav>
     </div>
@@ -32,27 +32,44 @@
 
     <div id="recipes">
         <div class="m-4">
-            <h6>Today's Recommendation</h6>
-            <div id="recommendation" class="grid grid-cols-5"></div>        
+            <h6 class="text-xl font-bold text-[#3E2C1B]">Today's Recommendation</h6>
+            <div id="recommendation" class="sm:grid grid-cols-2 md:grid grid-cols-3 lg:grid-cols-6 "></div>        
         </div>
         <div class="m-4">
-            <h6>For Meat Lovers</h6>     
-            <div id="meat" class="grid grid-cols-5"></div>
+            <h6 class="text-xl font-bold text-[#3E2C1B]">For Meat Lovers</h6>     
+            <div id="meat" class="sm:grid grid-cols-2 md:grid grid-cols-3 lg:grid-cols-6 "></div>
         </div>
         <div class="m-4">
-            <h6>For Water Lovers</h6>
-            <div id="water" class="grid grid-cols-5"></div>
+            <h6 class="text-xl font-bold text-[#3E2C1B]">For Water Lovers</h6>
+            <div id="water" class="sm:grid grid-cols-2 md:grid grid-cols-3 lg:grid-cols-6 "></div>
         </div>
         <div class="m-4">
-            <h6>Earth Treasures</h6>
-            <div id="earth" class="grid grid-cols-5"></div>
+            <h6 class="text-xl font-bold text-[#3E2C1B]">Earth Treasures</h6>
+            <div id="earth" class="sm:grid grid-cols-2 md:grid grid-cols-3 lg:grid-cols-6 "></div>
         </div>
         <div class="m-4">
-            <h6>Happy Endings</h6>
-            <div id="sweets" class="grid grid-cols-5"></div>
+            <h6 class="text-xl font-bold text-[#3E2C1B]">Happy Endings</h6>
+            <div id="sweets" class="sm:grid grid-cols-2 md:grid grid-cols-3 lg:grid-cols-6 "></div>
         </div>
 
     </div>
+    <footer class="p-10 bg-white">
+        <hr>
+        <div class="flex flex-row justify-between my-2">
+            <div class="my-4">
+                <p class="text-l font-bold text-[#3E2C1B]">Contact Us:</p>
+                <p>📩 help@macooks.com</p>
+                <p>📲 (+351)123456789</p>
+            </div>
+            <div class="my-4 text-[#3E2C1B]">
+                <p>©2024 MaCooks</p>
+            </div>
+            <div class="my-4 text-[#3E2C1B]">
+                <p>Food is the fuel of your body! Enjoy your meals!</p>
+            </div>
+
+        </div>
+    </footer>
      
 
     <script src="../scripts/index.js"></script>

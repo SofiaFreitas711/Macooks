@@ -151,7 +151,7 @@ searchBtn.addEventListener("click",async function(){
                             </div>`
                         }
             }else{
-                document.querySelector("#recipes").innerHTML=`<div id="result" class="grid justify-items-center"><img src="assetsProjeto/404.svg" class="h-[15vh]"></div>`
+                document.querySelector("#recipes").innerHTML=`<div id="result" class="grid justify-items-center"><img src="assetsProjeto/404.svg" class="h-[25vh] my-[10vh] mx-auto"></div>`
             }
         }     
 

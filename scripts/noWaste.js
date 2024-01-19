@@ -21,14 +21,14 @@ find.addEventListener("click", async function(){
                 <div class="text-sm shadow-md w-56 h-75 m-4 rounded-lg hover:bg-[#F7F7F7]" onclick="unique('${recipes[i].recipe.uri}')">
                     <img src=${recipes[i].recipe.image} class="rounded-lg w-[100%] h-[20vh] m-auto p-4"></img>
                     <p class="font-bold text-center text-[#3E2C1B]">${recipes[i].recipe.label}</p>
-                    <div class="flex flex-row justify-between">
+                    <div class="flex flex-row justify-center m-4">
                     <p style="visibility:${isItVegan(recipes[i].recipe.healthLabels)}" class="mx-2 mx-2 flex items-end text-[#967D65]">Vegan</p>
                     <p style="visibility:${isItVegetarian(recipes[i].recipe.healthLabels)}" class="mx-2 flex items-end text-[#967D65]">Vegetarian</p>
                     </div>
                 </div>`
             }
         }else{
-            document.querySelector("#container").innerHTML=`<div id="result" class="flex flex-row justify-items-center"><img src="../assetsProjeto/404.svg" class="h-12 m-auto"></div>`    
+            document.querySelector("#container").innerHTML=`<div id="result" class="flex flex-row justify-items-center"><img src="../assetsProjeto/404.svg" class="h-[25vh] my-[10vh] mx-auto"></div>`    
         }
     }
     

@@ -1,9 +1,6 @@
 let find = document.querySelector("button")
 
 find.addEventListener("click", async function(){
-    // let igr1 = "tuna"
-    // let igr2 = "tomato"
-    // let igr3 = "pepper"
     let igr1 = document.querySelector("#igr1").value
     let igr2 = document.querySelector("#igr2").value
     let igr3 = document.querySelector("#igr3").value
@@ -28,12 +25,14 @@ find.addEventListener("click", async function(){
                 </div>`
             }
         }else{
-            document.querySelector("#container").innerHTML=`<div id="result" class="flex flex-row justify-items-center"><img src="../assetsProjeto/404.svg" class="h-[25vh] my-[10vh] mx-auto"></div>`    
+            // if nothing to show show error image
+            document.querySelector("#container").innerHTML=`<div id="result" class="flex flex-row justify-items-center"><img src="../assets/404.svg" class="h-[25vh] my-[10vh] mx-auto"></div>`    
         }
     }
     
 })
 
+// shows if it's vegan or vegetarian
 function isItVegan(recipe){
     if (recipe.includes("Vegan")) {
         return "visible"
@@ -50,6 +49,7 @@ function isItVegetarian(recipe){
     }
 }
 
+// save to localStorage and change to recipe detail
 function unique(recipe){
     console.log(recipe);
     recipe = recipe.replace("#", "%23")

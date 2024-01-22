@@ -1,10 +1,8 @@
 //recommendation
+//random type each time
 let dishType =["Breakfast","Dinner","Lunch","Snack","Teatime"]
 let num = Math.floor(Math.random()*dishType.length)
-// setInterval(function(){
-//     num = Math.floor(Math.random()*dishType.length)
-// }, 5000)
-//86400000 -> um dia
+
 let chooseType = dishType[num]
 
 async function insertRecommendation(){
@@ -29,13 +27,11 @@ async function insertRecommendation(){
 insertRecommendation()
 
 //insert meat recipes
-
 async function insertMeat(){
     const response = await fetch(`https://api.edamam.com/api/recipes/v2?type=any&q=meat&app_id=5cfcc9f3&app_key=4d4502eb96e18028cafc0ee5631704c3`)
     const data = await response.json();
 
     let recipes = data.hits;
-    console.log(recipes);
 
     for(let i=0; i < 6; i++) {
             document.querySelector("#meat").innerHTML += `
@@ -122,7 +118,6 @@ async function insertDessert(){
 insertDessert()
 
 //find recipe
-
 let searchBtn = document.querySelector("#search")
 
 searchBtn.addEventListener("click",async function(){
@@ -136,7 +131,6 @@ searchBtn.addEventListener("click",async function(){
 
     if(search != ""){
             if(recipeSearch.length > 0){
-                        console.log(recipeSearch);
                         document.querySelector("#recipes").innerHTML = '<div id="result" class="sm:grid grid-cols-2 md:grid grid-cols-3 lg:grid-cols-6 "></div>'
                         for(let i=0; i<recipeSearch.length; i++){
                             document.querySelector("#result").innerHTML += `
@@ -151,7 +145,8 @@ searchBtn.addEventListener("click",async function(){
                             </div>`
                         }
             }else{
-                document.querySelector("#recipes").innerHTML=`<div id="result" class="grid justify-items-center"><img src="assetsProjeto/404.svg" class="h-[25vh] my-[10vh] mx-auto"></div>`
+                //if error show image
+                document.querySelector("#recipes").innerHTML=`<div id="result" class="grid justify-items-center"><img src="assets/404.svg" class="h-[25vh] my-[10vh] mx-auto"></div>`
             }
         }     
 
@@ -159,10 +154,12 @@ searchBtn.addEventListener("click",async function(){
 
 function unique(recipeSearch) {
     recipe = recipeSearch.replace("#", "%23")
+    //save to localStorage and change page to recipe detail
     localStorage.setItem("recipe",recipeSearch)
     location.href = "../pages/recipeDetail.html"        
 }
 
+// functions to know if it's vegan or vegetarian
 function isItVegan(recipe){
     if (recipe.includes("Vegan")) {
         return "visible"
